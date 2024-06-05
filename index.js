@@ -1,15 +1,22 @@
 let clicks = localStorage.getItem('clicks') ? parseInt(localStorage.getItem('clicks')) : 0;
 let grandma = localStorage.getItem('grandma') ? parseInt(localStorage.getItem('grandma')) : 10;
 let hasAutoClicker = localStorage.getItem('hasAutoClicker') === 'true';
+let achievementReached100 = localStorage.getItem('achievementReached100') === 'true';
 let intervals = [];
 
 const element = document.getElementById('clicks')
 const click = document.getElementById('click')
+const tripleclick = document.getElementById('tripleclick')
+const a1 = document.getElementById('a1')
+const a2 = document.getElementById('a2')
+const a3 = document.getElementById('a3')
 const doubleclick = document.getElementById('doubleclick')
 const autoclick = document.getElementById('autoclick')
 const clear = document.getElementById('clear')
+const factoryname = document.getElementById('factoryname')
 
 element.innerHTML = 'Clicks: ' + clicks;
+a1.innerHTML = "Locked"
 autoclick.innerHTML = "Clicks 1 click per second. Cost: " + grandma + " clicks per";
 
 function updateClicks() {
@@ -27,9 +34,50 @@ function startAutoClicker() {
     }, 1000);
 }
 
+
+function updateMessage() {
+    let input = document.getElementById("userInput").value;
+     let outputDiv = document.getElementById("outputMessage");
+     outputDiv.textContent = input;
+     localStorage.setItem("factoryName", input);
+}
+
+window.onload = function() {
+    var savedFactoryName = localStorage.getItem("factoryName");
+    if (savedFactoryName) {
+        document.getElementById("outputMessage").textContent = savedFactoryName;
+        document.getElementById("userInput").value = savedFactoryName;
+    }
+    if (clicks >= 100) {
+        document.getElementById("a1").innerHTML = "Starter Clicker (100 clicks)";
+        document.getElementById("a1").style.color="green";
+    }
+    if (clicks >= 250 ) {
+        document.getElementById("a2").innerHTML = "Novice Clicker (250 clicks)";
+        document.getElementById("a2").style.color="green"; // Update achievement
+    }
+    if (clicks >= 500 ) {
+        document.getElementById("a3").innerHTML = "Better Novice Clicker (500 clicks)";
+        document.getElementById("a3").style.color="green"; // Update achievement
+    }
+}
+
+
 click.onclick = function() {
-    ++clicks
+    ++clicks;
     updateClicks();
+    if (clicks >= 100) {
+        document.getElementById("a1").innerHTML = "Starter Clicker (100 clicks)";
+        document.getElementById("a1").style.color="green";
+    }
+    if (clicks >= 250 ) {
+        document.getElementById("a2").innerHTML = "Novice Clicker (250 clicks)";
+        document.getElementById("a2").style.color="green"; // Update achievement
+    }
+    if (clicks >= 500 ) {
+        document.getElementById("a3").innerHTML = "Better Novice Clicker (500 clicks)";
+        document.getElementById("a3").style.color="green"; // Update achievement
+    }
 }
 
 
@@ -41,6 +89,23 @@ doubleclick.onclick = function() {
         updateClicks();
         click.onclick = function() {
             clicks=clicks+2;
+            updateClicks();
+        };
+        
+    }
+    else {
+        console.log("not enough clicks");
+         element.innerHTML = "Not enough clicks";
+    }
+}
+
+tripleclick.onclick = function() {
+    if (clicks>=500) {
+        console.log("bought triple clicks")
+        clicks=clicks-500
+        updateClicks();
+        click.onclick = function() {
+            clicks=clicks+3;
             updateClicks();
         };
         

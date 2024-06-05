@@ -7,14 +7,34 @@
     <title>Clicker Game</title>
 </head>
 <body class="center">
-    <h1 style="font-size: 100px; margin-top: 0px;">Clicker Game</h1>
-    <button type="button" id="click">CLICK ME</button>
-        <h1 id="clicks">Clicks: </h1>
-    <h2>Shop</h2>
-    <button type="button" id="doubleclick" class="shopitem">Double click. Cost: 100 clicks (one time)</button>
-    <button type="button" id="autoclick" class="shopitem">Clicks 1 click per second. Cost: 10 clicks per</button>
+    <h1 style="font-size: 100px; margin-top: 0px; margin-bottom: 0px;">Clicker Game</h1>
+    <label for="userInput"><b>Enter your factory name:</b> </label>
+    <input type="text" id="userInput" name="userInput" oninput="updateMessage()">
+    <h2> <div id="outputMessage"></div></h2>
+    
 
-    <button id="clear">clear</button>
+    <button type="button" id="click">CLICK ME</button>
+
+
+        <h1 id="clicks">Clicks: </h1>
+<div class="right-anchor">     
+    <h2>Shop</h2>
+    <button type="button" id="doubleclick" class="shopitem">Double click. Cost: 100 clicks (one time)</button><br>
+    <button type="button" id="tripleclick" class="shopitem">Triple click. Cost: 500 clicks (one time)</button><br>
+    <button type="button" id="autoclick" class="shopitem">Clicker. Cost: 10 clicks per</button><br>
+
+</div>   
+
+<div class="left-anchor">
+    <h2>Achievements</h2>
+<h3 id="a1">Locked</h3>
+<h3 id="a2">Locked</h3>
+<h3 id="a3">Locked</h3>
+
+
+
+</div>
+    <button id="clear">Reset</button>
     <script src="index.js"></script>
 </body>
 </html>

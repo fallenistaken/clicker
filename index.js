@@ -113,7 +113,7 @@ click.onclick = function() {
     }
 }
 
-// Double Click function
+// Double Click functionw
 doubleclick.onclick = function() {
     if (clicks >= 100) {
         console.log("bought double clicks");

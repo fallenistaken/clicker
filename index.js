@@ -28,7 +28,7 @@ function updateClicks() {
 
 function startAutoClicker() {
     setInterval(function() {
-        clicks += 1;
+        clicks += grandma-10;
         updateClicks();
         console.log("Clicks: " + clicks);
     }, 1000);

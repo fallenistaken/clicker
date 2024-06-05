@@ -1,5 +1,6 @@
 let clicks = localStorage.getItem('clicks') ? parseInt(localStorage.getItem('clicks')) : 0;
 let grandma = localStorage.getItem('grandma') ? parseInt(localStorage.getItem('grandma')) : 10;
+let grandmaAmount = localStorage.getItem('grandmaAmount') ? parseInt(localStorage.getItem('grandmaAmount')): 0
 let hasAutoClicker = localStorage.getItem('hasAutoClicker') === 'true';
 let achievementReached100 = localStorage.getItem('achievementReached100') === 'true';
 let intervals = [];
@@ -17,18 +18,19 @@ const factoryname = document.getElementById('factoryname')
 
 element.innerHTML = 'Clicks: ' + clicks;
 a1.innerHTML = "Locked"
-autoclick.innerHTML = "Clicks 1 click per second. Cost: " + grandma + " clicks per";
+autoclick.innerHTML = "Clicks 1 click per second. Cost: " + grandma + " clicks per. Amount is " + grandmaAmount;
 
 function updateClicks() {
     element.innerHTML = 'Clicks: ' + clicks;
     localStorage.setItem('clicks', clicks);
     localStorage.setItem('grandma', grandma);
     localStorage.setItem('hasAutoClicker', hasAutoClicker);
+    localStorage.setItem('grandmaAmount', grandmaAmount);
 }
 
 function startAutoClicker() {
     setInterval(function() {
-        clicks += grandma-10;
+        clicks += grandmaAmount;
         updateClicks();
         console.log("Clicks: " + clicks);
     }, 1000);
@@ -124,8 +126,9 @@ autoclick.onclick = function() {
         clicks -= grandma;
         hasAutoClicker = true;
         grandma++;
+        grandmaAmount++;
         updateClicks();
-        autoclick.innerHTML = "Clicks 1 click per second. Cost: " + grandma + " clicks per";
+        autoclick.innerHTML = "Clicks 1 click per second. Cost: " + grandma + " clicks per. Amount is " + grandmaAmount;
         startAutoClicker();
     } else {
         element.innerHTML = "Not enough clicks";

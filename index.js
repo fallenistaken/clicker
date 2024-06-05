@@ -1,6 +1,7 @@
 let clicks = localStorage.getItem('clicks') ? parseInt(localStorage.getItem('clicks')) : 0;
 let grandma = localStorage.getItem('grandma') ? parseInt(localStorage.getItem('grandma')) : 10;
 let grandmaAmount = localStorage.getItem('grandmaAmount') ? parseInt(localStorage.getItem('grandmaAmount')) : 0;
+let kyle = localStorage.getItem('kyle') ? parseInt(localStorage.getItem('kyle')) : 0;
 let hasAutoClicker = localStorage.getItem('hasAutoClicker') === 'true';
 let achievementReached100 = localStorage.getItem('achievementReached100') === 'true';
 let autoClickerInterval = null;

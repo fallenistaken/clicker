@@ -19,12 +19,25 @@ const doubleclick = document.getElementById('doubleclick');
 const kyleclick = document.getElementById('kyleclick');
 const autoclick = document.getElementById('autoclick');
 const clear = document.getElementById('clear');
+const cookie = document.getElementById('cookie');
 const factoryname = document.getElementById('factoryname');
 
 element.innerHTML = 'Clicks: ' + formatNumberWithCommas(clicks);
 a1.innerHTML = "Locked";
 autoclick.innerHTML = "Grandpa. Clicks 1 click per second. Cost: " + grandma + " clicks per. Amount is " + grandmaAmount;
 kyleclick.innerHTML = "Kyle. Clicks 2 clicks per second. Cost: " + kyle + " clicks per. Amount is " + kyleAmount;
+
+document.getElementById('toggleImageVisibility').addEventListener('click', function() {
+    const gameImage = document.getElementById('gameImage');
+    if (gameImage.style.display === 'none') {
+        gameImage.style.display = 'block';
+        this.innerText = 'Hide Image';
+    } else {
+        gameImage.style.display = 'none';
+        this.innerText = 'Show Image';
+    }
+});
+
 
 function formatNumberWithCommas(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
